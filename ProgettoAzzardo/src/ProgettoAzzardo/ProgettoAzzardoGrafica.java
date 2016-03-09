@@ -65,7 +65,7 @@ public class ProgettoAzzardoGrafica {
 		shlNardisSlot = new Shell();
 		shlNardisSlot.setImage(SWTResourceManager.getImage("C:\\Users\\bortolamiolalessandr\\git\\ProgettoAzzardo\\immagini\\slot.png"));
 
-		shlNardisSlot.setSize(650, 500);
+		shlNardisSlot.setSize(1050, 1000);
 		shlNardisSlot.setText("NARDI'S SLOT");
 
 		// diamo ad ogni spazio del vettore un'immagine
@@ -298,7 +298,7 @@ public class ProgettoAzzardoGrafica {
 		lblSpin.setFont(SWTResourceManager.getFont("Segoe UI", 14, SWT.BOLD));
 		lblSpin.setBackground(SWTResourceManager.getColor(SWT.COLOR_GREEN));
 		lblSpin.setImage(SWTResourceManager.getImage(ProgettoAzzardoGrafica.class, "/ProgettoAzzardo/PlayNow.png"));
-		lblSpin.setBounds(464, 343, 88, 32);
+		lblSpin.setBounds(464, 347, 88, 32);
 		lblSpin.setText("SPIN");
 		
 		
@@ -335,6 +335,10 @@ public class ProgettoAzzardoGrafica {
 		});
 		buttonmeno.setText("-");
 		buttonmeno.setBounds(272, 351, 24, 25);
+		
+		Label label = new Label(shlNardisSlot, SWT.NONE);
+		label.setImage(SWTResourceManager.getImage("C:\\Users\\bortolamiolalessandr\\git\\ProgettoAzzardo\\immagini\\slot.png"));
+		label.setBounds(10, 438, 616, 506);
 
 	}
 

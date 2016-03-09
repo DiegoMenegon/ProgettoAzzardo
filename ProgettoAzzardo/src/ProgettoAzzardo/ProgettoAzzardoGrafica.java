@@ -26,7 +26,7 @@ public class ProgettoAzzardoGrafica {
 
 	int n = 0;
 
-	protected Shell shell;
+	protected Shell shlNardisSlot;
 
 	/**
 	 * Launch the application.
@@ -49,9 +49,9 @@ public class ProgettoAzzardoGrafica {
 	public void open() {
 		Display display = Display.getDefault();
 		createContents();
-		shell.open();
-		shell.layout();
-		while (!shell.isDisposed()) {
+		shlNardisSlot.open();
+		shlNardisSlot.layout();
+		while (!shlNardisSlot.isDisposed()) {
 			if (!display.readAndDispatch()) {
 				display.sleep();
 			}
@@ -62,10 +62,11 @@ public class ProgettoAzzardoGrafica {
 	 * Create contents of the window.
 	 */
 	protected void createContents() {
-		shell = new Shell();
+		shlNardisSlot = new Shell();
+		shlNardisSlot.setImage(SWTResourceManager.getImage("C:\\Users\\bortolamiolalessandr\\git\\ProgettoAzzardo\\immagini\\slot.png"));
 
-		shell.setSize(650, 500);
-		shell.setText("SWT Application");
+		shlNardisSlot.setSize(650, 500);
+		shlNardisSlot.setText("NARDI'S SLOT");
 
 		// diamo ad ogni spazio del vettore un'immagine
 
@@ -85,62 +86,62 @@ public class ProgettoAzzardoGrafica {
 		
 		
 		
-		Label label2 = new Label(shell, SWT.NONE);
+		Label label2 = new Label(shlNardisSlot, SWT.NONE);
 		label2.setBounds(30, 417, 35, 15);
 		label2.setText("Credit:");
 		
-		Label lblCredit = new Label(shell, SWT.NONE);
+		Label lblCredit = new Label(shlNardisSlot, SWT.NONE);
 		lblCredit.setBounds(71, 417, 24, 15);
 		lblCredit.setText("1000");
 		
-		Label label3 = new Label(shell, SWT.NONE);
+		Label label3 = new Label(shlNardisSlot, SWT.NONE);
 		label3.setBounds(143, 417, 24, 15);
 		label3.setText("Bet:");
 		
-		Label lblBet = new Label(shell, SWT.NONE);
+		Label lblBet = new Label(shlNardisSlot, SWT.NONE);
 		lblBet.setBounds(173, 417, 35, 15);
 		lblBet.setText("0");
 		
-		Label label4 = new Label(shell, SWT.NONE);
+		Label label4 = new Label(shlNardisSlot, SWT.NONE);
 		label4.setBounds(264, 417, 35, 15);
 		label4.setText("Ca$h:");
 		
-		Label lblCash = new Label(shell, SWT.NONE);
+		Label lblCash = new Label(shlNardisSlot, SWT.NONE);
 		lblCash.setBounds(305, 417, 24, 15);
 		lblCash.setText("0");
 		
-		Label lblNewLabel_1 = new Label(shell, SWT.NONE);
+		Label lblNewLabel_1 = new Label(shlNardisSlot, SWT.NONE);
 		lblNewLabel_1.setBounds(220, 356, 20, 15);
 		lblNewLabel_1.setText("Bet:");
 
-		Label lblSimbolo2 = new Label(shell, SWT.BORDER);
+		Label lblSimbolo2 = new Label(shlNardisSlot, SWT.BORDER);
 		lblSimbolo2.setBackground(SWTResourceManager.getColor(SWT.COLOR_WHITE));
 		lblSimbolo2.setForeground(SWTResourceManager.getColor(SWT.COLOR_BLACK));
 		lblSimbolo2.setFont(SWTResourceManager.getFont("Segoe UI", 13, SWT.NORMAL));
 		lblSimbolo2.setBounds(257, 90, 160, 153);
 
-		Label lblSimbolo1 = new Label(shell, SWT.BORDER);
+		Label lblSimbolo1 = new Label(shlNardisSlot, SWT.BORDER);
 		lblSimbolo1.setForeground(SWTResourceManager.getColor(SWT.COLOR_BLACK));
 		lblSimbolo1.setFont(SWTResourceManager.getFont("Segoe UI", 13, SWT.NORMAL));
 		lblSimbolo1.setBackground(SWTResourceManager.getColor(SWT.COLOR_WHITE));
 		lblSimbolo1.setBounds(58, 90, 160, 153);
 
-		Label lblSimbolo3 = new Label(shell, SWT.BORDER);
+		Label lblSimbolo3 = new Label(shlNardisSlot, SWT.BORDER);
 		lblSimbolo3.setForeground(SWTResourceManager.getColor(SWT.COLOR_BLACK));
 		lblSimbolo3.setFont(SWTResourceManager.getFont("Segoe UI", 13, SWT.NORMAL));
 		lblSimbolo3.setBackground(SWTResourceManager.getColor(SWT.COLOR_WHITE));
 		lblSimbolo3.setBounds(451, 90, 160, 153);
 
-		Label lblNewLabel = new Label(shell, SWT.NONE);
+		Label lblNewLabel = new Label(shlNardisSlot, SWT.NONE);
 		lblNewLabel.setFont(SWTResourceManager.getFont("Segoe UI", 24, SWT.NORMAL));
 		lblNewLabel.setBounds(30, 10, 497, 54);
 		lblNewLabel.setText("NARDI'S SLOT MACHINE");
 
-		Label lblSpin = new Label(shell, SWT.BORDER);
+		Label lblSpin = new Label(shlNardisSlot, SWT.BORDER);
 		
 		lblSpin.setEnabled(false);
 		
-		Button btnBetMax = new Button(shell, SWT.NONE);
+		Button btnBetMax = new Button(shlNardisSlot, SWT.NONE);
 		btnBetMax.addSelectionListener(new SelectionAdapter() {
 			@Override
 			public void widgetSelected(SelectionEvent e) {
@@ -154,7 +155,7 @@ public class ProgettoAzzardoGrafica {
 		btnBetMax.setBounds(125, 351, 75, 25);
 		btnBetMax.setText("Bet max");
 		
-		Button btnReset = new Button(shell, SWT.NONE);
+		Button btnReset = new Button(shlNardisSlot, SWT.NONE);
 		btnReset.addSelectionListener(new SelectionAdapter() {
 			@Override
 			public void widgetSelected(SelectionEvent e) {
@@ -302,7 +303,7 @@ public class ProgettoAzzardoGrafica {
 		
 		
 		
-		Button buttonpiu = new Button(shell, SWT.NONE);
+		Button buttonpiu = new Button(shlNardisSlot, SWT.NONE);
 		buttonpiu.addSelectionListener(new SelectionAdapter() {
 			@Override
 			public void widgetSelected(SelectionEvent e) {
@@ -316,7 +317,7 @@ public class ProgettoAzzardoGrafica {
 		buttonpiu.setBounds(242, 351, 24, 25);
 		buttonpiu.setText("+");
 		
-		Button buttonmeno = new Button(shell, SWT.NONE);
+		Button buttonmeno = new Button(shlNardisSlot, SWT.NONE);
 		buttonmeno.addSelectionListener(new SelectionAdapter() {
 			@Override
 			public void widgetSelected(SelectionEvent e) {

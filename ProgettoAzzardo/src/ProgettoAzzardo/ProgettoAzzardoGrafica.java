@@ -94,7 +94,7 @@ public class ProgettoAzzardoGrafica {
 		label2.setText("Credit:");
 		
 		Label lblCredit = new Label(shlNardisSlot, SWT.NONE);
-		lblCredit.setBounds(71, 417, 24, 15);
+		lblCredit.setBounds(71, 417, 46, 15);
 		lblCredit.setText("1000");
 		
 		Label label3 = new Label(shlNardisSlot, SWT.NONE);
@@ -149,8 +149,7 @@ public class ProgettoAzzardoGrafica {
 			@Override
 			public void widgetSelected(SelectionEvent e) {
 				lblSpin.setEnabled(true);
-				credit=credit-bet;
-				bet=bet+credit;
+				bet=credit;
 				lblBet.setText(""+bet);
 			}
 		});

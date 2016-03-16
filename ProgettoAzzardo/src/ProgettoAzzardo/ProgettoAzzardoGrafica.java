@@ -6,6 +6,8 @@ import org.eclipse.swt.widgets.Button;
 
 import java.awt.Color;
 
+import javax.swing.JOptionPane;
+
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
@@ -23,8 +25,9 @@ public class ProgettoAzzardoGrafica {
 	int credit=1000;
 	int bet=0;
 	int cash=0;
-
+	int punti=0;
 	int n = 0;
+	int soldi = 0;
 
 	protected Shell shlNardisSlot;
 
@@ -63,7 +66,7 @@ public class ProgettoAzzardoGrafica {
 	 */
 	protected void createContents() {
 		shlNardisSlot = new Shell();
-		shlNardisSlot.setImage(SWTResourceManager.getImage("C:\\Users\\bortolamiolalessandr\\git\\ProgettoAzzardo\\immagini\\slot.png"));
+		shlNardisSlot.setImage(SWTResourceManager.getImage("immagini\\slot.png"));
 
 		shlNardisSlot.setSize(1050, 1000);
 		shlNardisSlot.setText("NARDI'S SLOT");
@@ -146,34 +149,22 @@ public class ProgettoAzzardoGrafica {
 			@Override
 			public void widgetSelected(SelectionEvent e) {
 				lblSpin.setEnabled(true);
+				credit=credit-bet;
 				bet=bet+credit;
 				lblBet.setText(""+bet);
-				credit=0;
-				lblCredit.setText(""+credit);
 			}
 		});
 		btnBetMax.setBounds(125, 351, 75, 25);
 		btnBetMax.setText("Bet max");
-		
-		Button btnReset = new Button(shlNardisSlot, SWT.NONE);
-		btnReset.addSelectionListener(new SelectionAdapter() {
-			@Override
-			public void widgetSelected(SelectionEvent e) {
-				lblSpin.setEnabled(false);
-				lblBet.setText("0");
-				lblCash.setText("0");
-				lblCredit.setText("1000");
-				bet=0;
-				cash=0;
-				credit=1000;
-			}
-		});
-		btnReset.setBounds(30, 351, 75, 25);
-		btnReset.setText("Reset");
 
 		lblSpin.addMouseListener(new MouseAdapter() {
+			
 			@Override
+			
 			public void mouseDown(MouseEvent e) {
+				credit=credit-bet;
+				lblCredit.setText(""+credit);
+				lblCash.setText("0");
 				lblSpin.setEnabled(false);
 				Thread thread = new Thread() {
 					@Override
@@ -205,7 +196,32 @@ public class ProgettoAzzardoGrafica {
 								// TODO Auto-generated method stub
 								//condizione di vittoria
 								if(lblSimbolo1.getImage()==lblSimbolo2.getImage()&&lblSimbolo2.getImage()==lblSimbolo3.getImage()&&lblSimbolo1.getImage()==lblSimbolo3.getImage()){
-									lblNewLabel.setText("HAI VINTOOOOOOOOOOOO!Ooo");
+									if(lblSimbolo1.getImage()==immagini[0]){
+										punti=10;
+									}
+									if(lblSimbolo1.getImage()==immagini[1]){
+										punti=80;
+									}
+									if(lblSimbolo1.getImage()==immagini[2]){
+										punti=40;
+									}
+									if(lblSimbolo1.getImage()==immagini[3]){
+										punti=20;
+									}
+									if(lblSimbolo1.getImage()==immagini[4]){
+										punti=100;
+									}
+									if(lblSimbolo1.getImage()==immagini[5]){
+										punti=30;
+									}
+									if(lblSimbolo1.getImage()==immagini[6]){
+										punti=60;
+									}
+									cash=punti*bet;
+									lblCash.setText(""+cash);
+									credit=credit+cash;
+									lblCredit.setText(""+credit);
+									
 								}
 								
 								
@@ -308,10 +324,13 @@ public class ProgettoAzzardoGrafica {
 			@Override
 			public void widgetSelected(SelectionEvent e) {
 				lblSpin.setEnabled(true);
-				credit=credit-1;
-				lblCredit.setText(""+credit);
-				bet++;
-				lblBet.setText(""+bet);
+				if(bet<credit){
+					bet++;
+					lblBet.setText(""+bet);
+				}else{
+					JOptionPane.showMessageDialog(null,"Fondi insufficienti","Errore",JOptionPane.ERROR_MESSAGE);
+				}
+				
 			}
 		});
 		buttonpiu.setBounds(242, 351, 24, 25);
@@ -322,8 +341,6 @@ public class ProgettoAzzardoGrafica {
 			@Override
 			public void widgetSelected(SelectionEvent e) {
 				if(bet>0){
-					credit=credit+1;
-					lblCredit.setText(""+credit);
 					bet--;
 					lblBet.setText(""+bet);
 				}
@@ -337,7 +354,7 @@ public class ProgettoAzzardoGrafica {
 		buttonmeno.setBounds(272, 351, 24, 25);
 		
 		Label label = new Label(shlNardisSlot, SWT.NONE);
-		label.setImage(SWTResourceManager.getImage("C:\\Users\\bortolamiolalessandr\\git\\ProgettoAzzardo\\immagini\\slot.png"));
+		label.setImage(SWTResourceManager.getImage("immagini\\slot.png"));
 		label.setBounds(10, 438, 616, 506);
 
 	}

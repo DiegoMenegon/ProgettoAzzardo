@@ -28,7 +28,7 @@ public class ProgettoAzzardoGrafica {
 	int punti=0;
 	int n = 0;
 	int soldi = 0;
-
+	int ok = 0;
 	protected Shell shlNardisSlot;
 
 	/**
@@ -90,50 +90,52 @@ public class ProgettoAzzardoGrafica {
 		
 		
 		Label label2 = new Label(shlNardisSlot, SWT.NONE);
-		label2.setBounds(30, 417, 35, 15);
+		label2.setFont(SWTResourceManager.getFont("Segoe UI", 10, SWT.BOLD));
+		label2.setBounds(135, 425, 57, 37);
 		label2.setText("Credit:");
 		
 		Label lblCredit = new Label(shlNardisSlot, SWT.NONE);
-		lblCredit.setBounds(71, 417, 46, 15);
+		lblCredit.setFont(SWTResourceManager.getFont("Segoe UI", 10, SWT.NORMAL));
+		lblCredit.setBounds(192, 425, 79, 37);
 		lblCredit.setText("1000");
 		
-		Label label3 = new Label(shlNardisSlot, SWT.NONE);
-		label3.setBounds(143, 417, 24, 15);
-		label3.setText("Bet:");
-		
 		Label lblBet = new Label(shlNardisSlot, SWT.NONE);
-		lblBet.setBounds(173, 417, 35, 15);
+		lblBet.setFont(SWTResourceManager.getFont("Segoe UI", 10, SWT.NORMAL));
+		lblBet.setBounds(325, 425, 66, 37);
 		lblBet.setText("0");
 		
 		Label label4 = new Label(shlNardisSlot, SWT.NONE);
-		label4.setBounds(264, 417, 35, 15);
+		label4.setFont(SWTResourceManager.getFont("Segoe UI", 10, SWT.BOLD));
+		label4.setBounds(157, 502, 68, 30);
 		label4.setText("Ca$h:");
 		
 		Label lblCash = new Label(shlNardisSlot, SWT.NONE);
-		lblCash.setBounds(305, 417, 24, 15);
+		lblCash.setFont(SWTResourceManager.getFont("Segoe UI", 10, SWT.NORMAL));
+		lblCash.setBounds(225, 502, 68, 30);
 		lblCash.setText("0");
 		
 		Label lblNewLabel_1 = new Label(shlNardisSlot, SWT.NONE);
-		lblNewLabel_1.setBounds(220, 356, 20, 15);
+		lblNewLabel_1.setFont(SWTResourceManager.getFont("Segoe UI", 10, SWT.BOLD));
+		lblNewLabel_1.setBounds(270, 425, 56, 37);
 		lblNewLabel_1.setText("Bet:");
 
 		Label lblSimbolo2 = new Label(shlNardisSlot, SWT.BORDER);
 		lblSimbolo2.setBackground(SWTResourceManager.getColor(SWT.COLOR_WHITE));
 		lblSimbolo2.setForeground(SWTResourceManager.getColor(SWT.COLOR_BLACK));
 		lblSimbolo2.setFont(SWTResourceManager.getFont("Segoe UI", 13, SWT.NORMAL));
-		lblSimbolo2.setBounds(257, 90, 160, 153);
+		lblSimbolo2.setBounds(246, 269, 109, 153);
 
 		Label lblSimbolo1 = new Label(shlNardisSlot, SWT.BORDER);
 		lblSimbolo1.setForeground(SWTResourceManager.getColor(SWT.COLOR_BLACK));
 		lblSimbolo1.setFont(SWTResourceManager.getFont("Segoe UI", 13, SWT.NORMAL));
 		lblSimbolo1.setBackground(SWTResourceManager.getColor(SWT.COLOR_WHITE));
-		lblSimbolo1.setBounds(58, 90, 160, 153);
+		lblSimbolo1.setBounds(135, 269, 109, 153);
 
 		Label lblSimbolo3 = new Label(shlNardisSlot, SWT.BORDER);
 		lblSimbolo3.setForeground(SWTResourceManager.getColor(SWT.COLOR_BLACK));
 		lblSimbolo3.setFont(SWTResourceManager.getFont("Segoe UI", 13, SWT.NORMAL));
 		lblSimbolo3.setBackground(SWTResourceManager.getColor(SWT.COLOR_WHITE));
-		lblSimbolo3.setBounds(451, 90, 160, 153);
+		lblSimbolo3.setBounds(361, 269, 109, 153);
 
 		Label lblNewLabel = new Label(shlNardisSlot, SWT.NONE);
 		lblNewLabel.setFont(SWTResourceManager.getFont("Segoe UI", 24, SWT.NORMAL));
@@ -153,7 +155,7 @@ public class ProgettoAzzardoGrafica {
 				lblBet.setText(""+bet);
 			}
 		});
-		btnBetMax.setBounds(125, 351, 75, 25);
+		btnBetMax.setBounds(157, 531, 137, 25);
 		btnBetMax.setText("Bet max");
 
 		lblSpin.addMouseListener(new MouseAdapter() {
@@ -162,9 +164,17 @@ public class ProgettoAzzardoGrafica {
 			
 			public void mouseDown(MouseEvent e) {
 				credit=credit-bet;
+				if(credit < 0){
+					ok = 1;
+					lblSpin.setEnabled(false);
+					JOptionPane.showMessageDialog(null,"Fondi insufficienti","Errore",JOptionPane.ERROR_MESSAGE);
+					
+				}
+				else{
 				lblCredit.setText(""+credit);
 				lblCash.setText("0");
 				lblSpin.setEnabled(false);
+				}
 				Thread thread = new Thread() {
 					@Override
 					public void run() {
@@ -288,11 +298,11 @@ public class ProgettoAzzardoGrafica {
 					}
 
 				};
-
-				thread.start();
-				thread2.start();
-				thread3.start();
-
+				if(ok == 0){
+					thread.start();
+					thread2.start();
+					thread3.start();
+				}
 			}
 
 			public void mouseUp(MouseEvent e) {
@@ -313,12 +323,13 @@ public class ProgettoAzzardoGrafica {
 		lblSpin.setFont(SWTResourceManager.getFont("Segoe UI", 14, SWT.BOLD));
 		lblSpin.setBackground(SWTResourceManager.getColor(SWT.COLOR_GREEN));
 		lblSpin.setImage(SWTResourceManager.getImage(ProgettoAzzardoGrafica.class, "/ProgettoAzzardo/PlayNow.png"));
-		lblSpin.setBounds(464, 347, 88, 32);
+		lblSpin.setBounds(391, 425, 76, 37);
 		lblSpin.setText("SPIN");
 		
 		
 		
 		Button buttonpiu = new Button(shlNardisSlot, SWT.NONE);
+		buttonpiu.setFont(SWTResourceManager.getFont("Segoe UI", 12, SWT.BOLD));
 		buttonpiu.addSelectionListener(new SelectionAdapter() {
 			@Override
 			public void widgetSelected(SelectionEvent e) {
@@ -327,15 +338,21 @@ public class ProgettoAzzardoGrafica {
 					bet++;
 					lblBet.setText(""+bet);
 				}else{
+					lblSpin.setEnabled(false);
+					//JOptionPane.showMessageDialog(null,"Fondi insufficienti","Errore",JOptionPane.ERROR_MESSAGE);
+				}
+				if(credit <= 0){
+					lblSpin.setEnabled(false);
 					JOptionPane.showMessageDialog(null,"Fondi insufficienti","Errore",JOptionPane.ERROR_MESSAGE);
 				}
 				
 			}
 		});
-		buttonpiu.setBounds(242, 351, 24, 25);
+		buttonpiu.setBounds(325, 502, 51, 54);
 		buttonpiu.setText("+");
 		
 		Button buttonmeno = new Button(shlNardisSlot, SWT.NONE);
+		buttonmeno.setFont(SWTResourceManager.getFont("Segoe UI", 12, SWT.BOLD));
 		buttonmeno.addSelectionListener(new SelectionAdapter() {
 			@Override
 			public void widgetSelected(SelectionEvent e) {
@@ -350,11 +367,15 @@ public class ProgettoAzzardoGrafica {
 			}
 		});
 		buttonmeno.setText("-");
-		buttonmeno.setBounds(272, 351, 24, 25);
+		buttonmeno.setBounds(400, 502, 51, 54);
 		
 		Label label = new Label(shlNardisSlot, SWT.NONE);
 		label.setImage(SWTResourceManager.getImage("immagini\\slot.png"));
-		label.setBounds(10, 438, 616, 506);
+		label.setBounds(10, 660, 616, 506);
+		
+		Button button = new Button(shlNardisSlot, SWT.NONE);
+		button.setImage(SWTResourceManager.getImage("C:\\Users\\Alessandro\\git\\ProgettoAzzardo\\ProgettoAzzardo\\immagini\\slot.png"));
+		button.setBounds(0, 90, 616, 506);
 
 	}
 

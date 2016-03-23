@@ -68,7 +68,7 @@ public class ProgettoAzzardoGrafica {
 		shlNardisSlot = new Shell();
 		shlNardisSlot.setImage(SWTResourceManager.getImage("immagini\\slot.png"));
 
-		shlNardisSlot.setSize(1050, 1000);
+		shlNardisSlot.setSize(645, 644);
 		shlNardisSlot.setText("NARDI'S SLOT");
 
 		// diamo ad ogni spazio del vettore un'immagine
@@ -138,8 +138,9 @@ public class ProgettoAzzardoGrafica {
 		lblSimbolo3.setBounds(361, 269, 109, 153);
 
 		Label lblNewLabel = new Label(shlNardisSlot, SWT.NONE);
-		lblNewLabel.setFont(SWTResourceManager.getFont("Segoe UI", 24, SWT.NORMAL));
-		lblNewLabel.setBounds(30, 10, 497, 54);
+		lblNewLabel.setAlignment(SWT.CENTER);
+		lblNewLabel.setFont(SWTResourceManager.getFont("Txt", 24, SWT.NORMAL));
+		lblNewLabel.setBounds(59, 10, 497, 54);
 		lblNewLabel.setText("NARDI'S SLOT MACHINE");
 
 		Label lblSpin = new Label(shlNardisSlot, SWT.BORDER);
@@ -150,9 +151,15 @@ public class ProgettoAzzardoGrafica {
 		btnBetMax.addSelectionListener(new SelectionAdapter() {
 			@Override
 			public void widgetSelected(SelectionEvent e) {
-				lblSpin.setEnabled(true);
-				bet=credit;
-				lblBet.setText(""+bet);
+				if(credit>0){
+					lblSpin.setEnabled(true);
+					bet=credit;
+					lblBet.setText(""+bet);
+				}else{
+					lblSpin.setEnabled(false);
+					JOptionPane.showMessageDialog(null,"Fondi insufficienti","Errore",JOptionPane.ERROR_MESSAGE);
+				}
+				
 			}
 		});
 		btnBetMax.setBounds(157, 531, 137, 25);
@@ -183,7 +190,7 @@ public class ProgettoAzzardoGrafica {
 						for (int i = 0; i < 7; i++) {
 
 							n = (int) (Math.random() * 7);
-							System.out.println(i);
+							//System.out.println(i);
 							Display.getDefault().asyncExec(new Runnable() {
 								public void run() {
 									// ora le immagini cambiano
@@ -206,25 +213,25 @@ public class ProgettoAzzardoGrafica {
 								//condizione di vittoria
 								if(lblSimbolo1.getImage()==lblSimbolo2.getImage()&&lblSimbolo2.getImage()==lblSimbolo3.getImage()&&lblSimbolo1.getImage()==lblSimbolo3.getImage()){
 									if(lblSimbolo1.getImage()==immagini[0]){
-										punti=10;
+										punti=10; //mela
 									}
 									if(lblSimbolo1.getImage()==immagini[1]){
-										punti=80;
+										punti=80; //diamante
 									}
 									if(lblSimbolo1.getImage()==immagini[2]){
-										punti=40;
+										punti=40; //campana
 									}
 									if(lblSimbolo1.getImage()==immagini[3]){
-										punti=20;
+										punti=20; //anguria
 									}
 									if(lblSimbolo1.getImage()==immagini[4]){
-										punti=100;
+										punti=100; //sette
 									}
 									if(lblSimbolo1.getImage()==immagini[5]){
-										punti=30;
+										punti=30; //fragola
 									}
 									if(lblSimbolo1.getImage()==immagini[6]){
-										punti=60;
+										punti=60; //corona
 									}
 									cash=punti*bet;
 									lblCash.setText(""+cash);
@@ -249,7 +256,7 @@ public class ProgettoAzzardoGrafica {
 
 						for (int i = 0; i < 7; i++) {
 							n = (int) (Math.random() * 7);
-							System.out.println(i);
+							//System.out.println(i);
 							Display.getDefault().asyncExec(new Runnable() {
 								public void run() {
 									// ora le immagini cambiano
@@ -279,7 +286,7 @@ public class ProgettoAzzardoGrafica {
 
 						for (int i = 0; i < 7; i++) {
 							n = (int) (Math.random() * 7);
-							System.out.println(i);
+							//System.out.println(i);
 							Display.getDefault().asyncExec(new Runnable() {
 								public void run() {
 									// ora le immagini cambiano
@@ -370,12 +377,9 @@ public class ProgettoAzzardoGrafica {
 		buttonmeno.setBounds(400, 502, 51, 54);
 		
 		Label label = new Label(shlNardisSlot, SWT.NONE);
+		label.setAlignment(SWT.CENTER);
 		label.setImage(SWTResourceManager.getImage("immagini\\slot.png"));
-		label.setBounds(10, 660, 616, 506);
-		
-		Button button = new Button(shlNardisSlot, SWT.NONE);
-		button.setImage(SWTResourceManager.getImage("C:\\Users\\Alessandro\\git\\ProgettoAzzardo\\ProgettoAzzardo\\immagini\\slot.png"));
-		button.setBounds(0, 90, 616, 506);
+		label.setBounds(0, 80, 616, 506);
 
 	}
 

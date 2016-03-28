@@ -18,6 +18,7 @@ import org.eclipse.swt.events.MouseAdapter;
 
 public class ProgettoAzzardoGrafica {
 	Image[] immagini = new Image[7];
+	Image pay=new Image(null, "immagini/punti.png");
 	Label lblSimbolo1, lblSimbolo2, lblSimbolo3;
 	int credit=1000;
 	int bet=0;
@@ -26,6 +27,7 @@ public class ProgettoAzzardoGrafica {
 	int n = 0;
 	int soldi = 0;
 	int ok = 0;
+	boolean x= true;
 	protected Shell shlNardisSlot;
 
 	/**
@@ -137,8 +139,9 @@ public class ProgettoAzzardoGrafica {
 		Label lblNewLabel = new Label(shlNardisSlot, SWT.NONE);
 		lblNewLabel.setAlignment(SWT.CENTER);
 		lblNewLabel.setFont(SWTResourceManager.getFont("Txt", 24, SWT.NORMAL));
-		lblNewLabel.setBounds(59, 10, 497, 54);
+		lblNewLabel.setBounds(105, 10, 410, 54);
 		lblNewLabel.setText("NARDI'S SLOT MACHINE");
+		
 
 		Label lblSpin = new Label(shlNardisSlot, SWT.BORDER);
 		
@@ -348,6 +351,7 @@ public class ProgettoAzzardoGrafica {
 		buttonpiu.setBounds(325, 502, 51, 54);
 		buttonpiu.setText("+");
 		
+		
 		Button buttonmeno = new Button(shlNardisSlot, SWT.NONE);
 		buttonmeno.setFont(SWTResourceManager.getFont("Segoe UI", 12, SWT.BOLD));
 		buttonmeno.addSelectionListener(new SelectionAdapter() {
@@ -373,6 +377,60 @@ public class ProgettoAzzardoGrafica {
 		label.setAlignment(SWT.CENTER);
 		label.setImage(SWTResourceManager.getImage("immagini\\slot.png"));
 		label.setBounds(0, 80, 616, 506);
+		
+		Label lblpunti = new Label(shlNardisSlot, SWT.NONE);
+		lblpunti.setAlignment(SWT.CENTER);
+		lblpunti.setBounds(96, 10, 397, 576);
+		lblpunti.setImage(pay);
+		lblpunti.setVisible(false);
+		
+		Button btnPayTable = new Button(shlNardisSlot, SWT.NONE);
+		btnPayTable.addSelectionListener(new SelectionAdapter() {
+			@Override
+			public void widgetSelected(SelectionEvent e) {
+				if(x==true){
+					lblpunti.setVisible(true);
+					label.setVisible(false);
+					label2.setVisible(false);
+					label4.setVisible(false);
+					lblBet.setVisible(false);
+					lblCash.setVisible(false);
+					lblCredit.setVisible(false);
+					lblNewLabel.setVisible(false);
+					lblNewLabel_1.setVisible(false);
+					lblSimbolo1.setVisible(false);
+					lblSimbolo2.setVisible(false);
+					lblSimbolo3.setVisible(false);
+					lblSpin.setVisible(false);
+					btnBetMax.setVisible(false);
+					buttonmeno.setVisible(false);
+					buttonpiu.setVisible(false);
+					x=false;
+				}else{
+					lblpunti.setVisible(false);
+					label.setVisible(true);
+					label2.setVisible(true);
+					label4.setVisible(true);
+					lblBet.setVisible(true);
+					lblCash.setVisible(true);
+					lblCredit.setVisible(true);
+					lblNewLabel.setVisible(true);
+					lblNewLabel_1.setVisible(true);
+					lblSimbolo1.setVisible(true);
+					lblSimbolo2.setVisible(true);
+					lblSimbolo3.setVisible(true);
+					lblSpin.setVisible(true);
+					btnBetMax.setVisible(true);
+					buttonmeno.setVisible(true);
+					buttonpiu.setVisible(true);
+					x=true;
+				}
+				
+			}
+		});
+		btnPayTable.setBounds(541, 10, 75, 25);
+		btnPayTable.setText("Pay Table");
+		
 
 	}
 

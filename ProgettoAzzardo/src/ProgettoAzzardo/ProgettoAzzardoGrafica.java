@@ -4,15 +4,12 @@ import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.widgets.Button;
 
-import java.awt.Color;
-
 import javax.swing.JOptionPane;
 
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.swt.graphics.Image;
-import org.eclipse.swt.widgets.Text;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.wb.swt.SWTResourceManager;
 import org.eclipse.swt.events.MouseTrackAdapter;
@@ -107,7 +104,7 @@ public class ProgettoAzzardoGrafica {
 		Label label4 = new Label(shlNardisSlot, SWT.NONE);
 		label4.setFont(SWTResourceManager.getFont("Segoe UI", 10, SWT.BOLD));
 		label4.setBounds(157, 502, 68, 30);
-		label4.setText("Ca$h:");
+		label4.setText("Win:");
 		
 		Label lblCash = new Label(shlNardisSlot, SWT.NONE);
 		lblCash.setFont(SWTResourceManager.getFont("Segoe UI", 10, SWT.NORMAL));
@@ -157,7 +154,7 @@ public class ProgettoAzzardoGrafica {
 					lblBet.setText(""+bet);
 				}else{
 					lblSpin.setEnabled(false);
-					JOptionPane.showMessageDialog(null,"Fondi insufficienti","Errore",JOptionPane.ERROR_MESSAGE);
+					JOptionPane.showMessageDialog(null,"Non c'è niente da scommettere","Errore",JOptionPane.ERROR_MESSAGE);
 				}
 				
 			}
@@ -172,12 +169,12 @@ public class ProgettoAzzardoGrafica {
 			public void mouseDown(MouseEvent e) {
 				credit=credit-bet;
 				if(credit < 0){
-					ok = 1;
-					lblSpin.setEnabled(false);
+					credit=credit+bet;
+					ok=1;
 					JOptionPane.showMessageDialog(null,"Fondi insufficienti","Errore",JOptionPane.ERROR_MESSAGE);
-					
 				}
 				else{
+				ok=0;
 				lblCredit.setText(""+credit);
 				lblCash.setText("0");
 				lblSpin.setEnabled(false);
@@ -340,19 +337,12 @@ public class ProgettoAzzardoGrafica {
 		buttonpiu.addSelectionListener(new SelectionAdapter() {
 			@Override
 			public void widgetSelected(SelectionEvent e) {
-				lblSpin.setEnabled(true);
 				if(bet<credit){
+					ok=0;
+					lblSpin.setEnabled(true);
 					bet++;
 					lblBet.setText(""+bet);
-				}else{
-					lblSpin.setEnabled(false);
-					//JOptionPane.showMessageDialog(null,"Fondi insufficienti","Errore",JOptionPane.ERROR_MESSAGE);
 				}
-				if(credit <= 0){
-					lblSpin.setEnabled(false);
-					JOptionPane.showMessageDialog(null,"Fondi insufficienti","Errore",JOptionPane.ERROR_MESSAGE);
-				}
-				
 			}
 		});
 		buttonpiu.setBounds(325, 502, 51, 54);
@@ -363,6 +353,9 @@ public class ProgettoAzzardoGrafica {
 		buttonmeno.addSelectionListener(new SelectionAdapter() {
 			@Override
 			public void widgetSelected(SelectionEvent e) {
+				if(bet<credit){
+					ok=0;
+				}
 				if(bet>0){
 					bet--;
 					lblBet.setText(""+bet);

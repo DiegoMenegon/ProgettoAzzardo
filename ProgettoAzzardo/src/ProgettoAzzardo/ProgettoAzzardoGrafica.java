@@ -4,6 +4,17 @@ import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.widgets.Button;
 
+import java.applet.AudioClip;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.InputStream;
+import  sun.audio.*;    
+import  java.io.*;
+import javax.print.attribute.standard.Media;
+import javax.sound.sampled.AudioInputStream;
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.Clip;
 import javax.swing.JOptionPane;
 
 import org.eclipse.swt.SWT;
@@ -16,7 +27,7 @@ import org.eclipse.swt.events.MouseTrackAdapter;
 import org.eclipse.swt.events.MouseEvent;
 import org.eclipse.swt.events.MouseAdapter;
 
-public class ProgettoAzzardoGrafica {
+public class ProgettoAzzardoGrafica  {
 	Image[] immagini = new Image[7];
 	Image pay=new Image(null, "immagini/punti.png");
 	Label lblSimbolo1, lblSimbolo2, lblSimbolo3;
@@ -29,6 +40,12 @@ public class ProgettoAzzardoGrafica {
 	int ok = 0;
 	boolean x= true;
 	protected Shell shlNardisSlot;
+	File f= new File("immagini/suoni/spin.wav");
+	File f1= new File("immagini/suoni/win.wav");
+	
+	
+	
+	
 
 	/**
 	 * Launch the application.
@@ -36,7 +53,7 @@ public class ProgettoAzzardoGrafica {
 	 * @param args
 	 */
 	public static void main(String[] args) {
-
+		
 		try {
 			ProgettoAzzardoGrafica window = new ProgettoAzzardoGrafica();
 			window.open();
@@ -44,6 +61,8 @@ public class ProgettoAzzardoGrafica {
 			e.printStackTrace();
 		}
 	}
+	
+	
 
 	/**
 	 * Open the window.

@@ -157,8 +157,8 @@ public class ProgettoAzzardoGrafica  {
 
 		Label lblNewLabel = new Label(shlNardisSlot, SWT.NONE);
 		lblNewLabel.setAlignment(SWT.CENTER);
-		lblNewLabel.setFont(SWTResourceManager.getFont("Txt", 24, SWT.NORMAL));
-		lblNewLabel.setBounds(105, 10, 410, 54);
+		lblNewLabel.setFont(SWTResourceManager.getFont("Txt", 20, SWT.NORMAL));
+		lblNewLabel.setBounds(105, 10, 430, 54);
 		lblNewLabel.setText("NARDI'S SLOT MACHINE");
 		
 
